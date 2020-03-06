@@ -1,0 +1,44 @@
+.container {
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 40px;
+}
+
+hr {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 67%;
+    position: relative;
+    left: -130px;
+}
+
+h4 {
+    margin-left: 7px;
+}
+
+ul {
+    list-style: none;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+    float: left;
+    border: 1px solid #333;
+    background-color: #eee;
+}
+
+.Items-done {
+    margin-top: -31px;
+}
+
+.Items-done h4 {
+    float: right;
+    position: relative;
+    left: -424px;
+    top: -37px;
+}
+
+#done {
+    margin-left: 17px;
+    margin-top: 10px;
+}
