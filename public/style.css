@@ -8,9 +8,7 @@ hr {
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 67%;
-    position: relative;
-    left: -130px;
+    
 }
 
 h4 {
@@ -21,7 +19,7 @@ ul {
     list-style: none;
     padding: 10px;
     margin: 10px;
-    width: 30%;
+    width: 100%;
     float: left;
     border: 1px solid #333;
     background-color: #eee;
@@ -38,7 +36,7 @@ ul {
     top: -37px;
 }
 
-#done {
+/* #done {
     margin-left: 17px;
     margin-top: 10px;
-}
+} */

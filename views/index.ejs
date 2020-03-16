@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link href="/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <form action="/addTask" method="POST">
+          <div class="col-md-offset-2 col-md-6 col-sm-offset-1 col-sm-7">
+            <input type="text" class="form-control" name="textTodo" placeholder="create new task"/>
+          </div>
+          <div class="col-md-4 col-sm-4">
+          <button type="submit" class="btn btn-md btn-default" >
+            ADD
+          </button>
+        </div>
+        </form>
+      
+    </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <h4>Todo Items</h4>
+          <ul id="todo">
+          <% for(var i = 0; i <todos.length; i++){%>
+            <% if(todos[i].status == 0){ %>
+              <li>
+                <input type="checkbox" name="todo" value="<%= todos[i].id%>" onclick='moveTask(event,"<%= todos[i].id %>")' /> <%= todos[i].task%> 
+              </li>
+            <%} %>
+                
+          <%} %>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <h4>Done Items</h4>
+          <ul id="done">
+            <% for(var i = 0; i <todos.length; i++){%>
+              <% if(todos[i].status == 1){ %>
+              <li><input type="checkbox" name="done" value="<%= todos[i].id%>" onclick='moveTask(event,"<%= todos[i].id %>")'/> <%= todos[i].task%> </li>
+              <%} %>
+              <%} %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      function moveTask (event, id){
+        const{name} = event.target;
+
+        fetch("http://localhost:8080/moveTaskDone", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            id
+          })
+        }).then(response => response.json()).then(status=> {
+          console.log(status);
+          window.location.reload()
+
+        }).catch(err => console.log(err))
+      }
+    </script>
+  </body>
+</html>
