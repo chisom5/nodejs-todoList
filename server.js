@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const kenx = require("knex");
 
 const db = kenx({
@@ -13,8 +12,8 @@ const db = kenx({
 });
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
